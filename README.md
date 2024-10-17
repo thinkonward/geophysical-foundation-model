@@ -110,7 +110,7 @@ compare results we document the Geophysical Foundation Model is 2-3 times better
 
 ### Model Architecture and Objective
 
-![image](https://huggingface.co/thinkonward/geophysical-foundation-model/blob/main/src_imgs/model_architecture.png)
+![image](src_imgs/src_imgs_model_architecture.png)
 
 This model uses a modified version of the ViT MAE architecture. The model uses a masking technique on traces in 2D seismic images, rather than patches
 
