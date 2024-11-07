@@ -20,7 +20,8 @@ import torch.nn.functional as F
 from huggingface_hub import PyTorchModelHubMixin
 
 
-class PatchEmbed(nn.Module, PyTorchModelHubMixin):
+
+class PatchEmbed(nn.Module):
     """ 2D Image to Patch Embedding
 
     flux capactitor - allows us to trace mask
@@ -28,8 +29,8 @@ class PatchEmbed(nn.Module, PyTorchModelHubMixin):
 
     def __init__(
             self,
-            img_size=[224, 224],
-            patch_size=[224,1],
+            img_size=[400, 160],
+            patch_size=[400,1],
             in_chans=1,
             embed_dim=768,
             norm_layer=None,
@@ -57,7 +58,7 @@ class PatchEmbed(nn.Module, PyTorchModelHubMixin):
         return x
 
 
-class CustomHead(nn.Module, PyTorchModelHubMixin):
+class CustomHead(nn.Module):
 
     def __init__(self, head_embed_dim, img_channels, patch_shape, patchify_fn, unpatchify_fn, num_classes):
         super().__init__()
@@ -121,9 +122,9 @@ class CustomHead(nn.Module, PyTorchModelHubMixin):
 class ElasticViTMAE(nn.Module, PyTorchModelHubMixin):
     """ Masked Autoencoder with VisionTransformer backbone
     """
-    def __init__(self, img_size=[224, 224], patch_size=[16, 16], in_chans=3,
-                 embed_dim=1024, depth=24, num_heads=16,
-                 decoder_embed_dim=512, decoder_depth=8, decoder_num_heads=16,
+    def __init__(self, img_size=[400, 160], patch_size=[400, 1], in_chans=1,
+                 embed_dim=1200, depth=16, num_heads=20,
+                 decoder_embed_dim=800, decoder_depth=12, decoder_num_heads=20,
                  mlp_ratio=4., norm_layer=nn.LayerNorm, norm_pix_loss=False,
                  custom_head=False, full_image_loss=True, classes=10):
         super().__init__()
@@ -361,7 +362,7 @@ class ElasticViTMAE(nn.Module, PyTorchModelHubMixin):
         loss = 1 - accuracy
         return loss
 
-    def forward(self, imgs, labels, idx_shuffle, len_keep):
+    def forward(self, imgs, idx_shuffle, len_keep):
         latent, mask, ids_restore = self.forward_encoder(imgs, idx_shuffle, len_keep)
         pred = self.forward_decoder(latent, ids_restore)
         loss = self.forward_loss(imgs, pred, mask)
