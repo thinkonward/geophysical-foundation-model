@@ -8,6 +8,12 @@ Welcome to the Geophysical Foundation Model (GFM) repository! This repository is
 2. [Getting Started](#getting-started)
 3. [Running the Model](#running-the-model)
 4. [Contributing](#contributing)
+5. [Model Details](#model-details)
+6. [Uses](#uses)
+7. [Training Details](#training-details)
+8. [Evaluation](#evaluation)
+9. [Citations](#citations)
+10. [Contact](#model-card-contact)
 
 ## How to Fork and Clone the Repository
 
@@ -16,7 +22,7 @@ If you want to work on this repository or make changes follow the instructions p
 ### Step 1: Fork the Repository
 To fork the repository to your GitHub account:
 
-1. Go to the [Geophysical Foundation Model repository page](https://github.com/thinkonward/geophysical-foundaton-model).
+1. Go to the [Geophysical Foundation Model repository page](https://github.com/thinkonward/geophysical-foundation-model).
 2. Click the "Fork" button located at the top right corner of the repository.
 
 ### Step 2: Clone the Forked Repository
@@ -34,6 +40,7 @@ git clone https://github.com/yourusername/geophysical-foundaton-model.git
 
 ```bash
 cd geophysical-foundaton-model
+```
 
 ### Step 4: Create a new branch 
 
@@ -46,7 +53,6 @@ git checkout -b feature-my-feature
 ```
 
 2. Now you are working on a separate branch and can make changes without affecting the main codebase.
-```
 
 ## Getting Started
 
@@ -63,18 +69,18 @@ The project is organized as follows:
 
 ## Running the Model
 
-0. Start from the `geophysical-foundation-model` directory in the terminal.
 1. Ensure you have Python (>3.10) installed on your system.
-2. Create a new virtual environment
+2. Start from the `geophysical-foundation-model` directory in the terminal.
+3. Create a new virtual environment
 ```bash
 conda create -n geophysics python=3.10 
 ```
-3. Activate the newly created environment:
+3. After creation, activate the newly created environment:
 
 ```bash
 conda activate geophysics
 ```
-4. Install any required dependencies by running:
+4. Install the required dependencies by running:
 
 ```bash
 pip install -r requirements.txt
@@ -102,7 +108,7 @@ model = ElasticViTMAE.ElasticViTMAE()
 
 ## Contributing
 
-We welcome contributions from anyone interested in improving this project!
+We welcome contributions from anyone interested in improving this project! To contribute to the model use the following steps:
 
 1. Fork the repository.
 2. Create a new branch for your changes:
@@ -128,8 +134,6 @@ git push origin feature/my-feature
 
 Thank you for contributing to the Geophysical Foundation Model 
 
-
-# Model Card for ThinkOnward's Geophysical Foundation Model
 
 ## Model Details
 
@@ -173,26 +177,6 @@ Downstream tasks include:
 ### Out-of-Scope Use
 
 The backbone of this model was trained using 3D seismic data from the Patch the Planet Challenge hosted by ThinkOnward. Use of this model on anything outside of seismic data, or similar technologies would be out-of-scope and likely have poor performance.
-
-## How to Get Started with the Model
-
-You can load the model using:
-
-```python
-import torch
-from huggingface_hub import hf_hub_download
-
-# For root directory
-model_path = hf_hub_download("thinkonward/geophysical-foundation-model", "elasticvitmae.bin")
-
-ElasticVitMAE = torch.load(model_path)
-```
-
-Once the mode architecture has been defined, you can use `.from_pretrained()` to extract weights!
-
-```python
-model = ElasticViTMAE.from_pretrained("thinkonward/geophysical-foundation-model")
-```
 
 ## Training Details
 
