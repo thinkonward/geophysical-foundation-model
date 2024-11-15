@@ -33,7 +33,7 @@ Once you have forked the repository, you can clone it to your local machine.
 3. Run the following command to clone the forked repository (remember to change yourusername to your actual GitHub username):
 
 ```bash
-git clone https://github.com/yourusername/geophysical-foundaton-model.git
+git clone git@github.com:yourusername/geophysical-foundation-model.git
 ```
 
 ### Step 3: Change into the newly cloned directory:
