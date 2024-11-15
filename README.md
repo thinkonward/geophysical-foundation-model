@@ -39,7 +39,7 @@ git clone git@github.com:yourusername/geophysical-foundation-model.git
 ### Step 3: Change into the newly cloned directory:
 
 ```bash
-cd geophysical-foundaton-model
+cd geophysical-foundation-model
 ```
 
 ### Step 4: Create a new branch 
