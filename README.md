@@ -1,19 +1,135 @@
----
-license: apache-2.0
-tags:
-- vision
-- MAE
-- model_hub_mixin
-- pytorch_model_hub_mixin
-datasets:
-- patch-the-planet
----
+![ThinkOnward Logo](Tutorial/assets/ThinkOnward.png)
+# Geophysical Foundation Model
+
+Welcome to the Geophysical Foundation Model (GFM) repository! This repository is designed to help you explore, understand, and use the Geophysical Foundation Model.
+
+## Table of Contents
+1. [How to Fork and Clone the Repository](#how-to-fork-and-clone-the-repository)
+2. [Getting Started](#getting-started)
+3. [Running the Model](#running-the-model)
+4. [Contributing](#contributing)
+
+## How to Fork and Clone the Repository
+
+If you want to work on this repository or make changes follow the instructions provided below. 
+
+### Step 1: Fork the Repository
+To fork the repository to your GitHub account:
+
+1. Go to the [Geophysical Foundation Model repository page](https://github.com/thinkonward/geophysical-foundaton-model).
+2. Click the "Fork" button located at the top right corner of the repository.
+
+### Step 2: Clone the Forked Repository
+Once you have forked the repository, you can clone it to your local machine.
+
+1. Open a terminal or command prompt.
+2. Navigate to the directory where you want to store the cloned repository.
+3. Run the following command to clone the forked repository (remember to change yourusername to your actual GitHub username):
+
+```bash
+git clone https://github.com/yourusername/geophysical-foundaton-model.git
+```
+
+### Step 3: Change into the newly cloned directory:
+
+```bash
+cd geophysical-foundaton-model
+
+### Step 4: Create a new branch 
+
+Before making changes to the repository, it’s a good practice to create a new branch for your work. This keeps your main codebase clean and organized.
+
+1. Create a new branch using the following command. Replace `feature-my-feature` with your desired branch name:
+
+```bash
+git checkout -b feature-my-feature
+```
+
+2. Now you are working on a separate branch and can make changes without affecting the main codebase.
+```
+
+## Getting Started
+
+Now that you have forked and cloned the repository to your local machine and have created a new branch, you can start exploring the contents.
+
+### Directory Structure
+The project is organized as follows:
+- `GFM/`: Contains model architecture.
+- `src_imgs/`: images used in the repository.
+- `Tutorial/`: A Jupyter notebook to get you started with the model.
+- `README.md`: This file.
+- `LICENSE`: The open source license file.
+- `requirements.txt`: Dependencies for the model.
+
+## Running the Model
+
+0. Start from the `geophysical-foundation-model` directory in the terminal.
+1. Ensure you have Python (>3.10) installed on your system.
+2. Create a new virtual environment
+```bash
+conda create -n geophysics python=3.10 
+```
+3. Activate the newly created environment:
+
+```bash
+conda activate geophysics
+```
+4. Install any required dependencies by running:
+
+```bash
+pip install -r requirements.txt
+```
+5. Start up a Jupyterlab notebook and get started with the tutorial in the `Tutorial` directory. To start a notebook server from the terminal run
+
+```bash
+jupyter lab
+```
+
+And open `Tutorial/GFM_webinar.ipynb` to learn more about data processing.
+
+
+6. For advanced users, you can download the model weights from HuggingFace and load them into an instance of the model in Python after you have requested access on HuggingFace.
+
+```python
+from huggingface_hub import snapshot_download
+MODEL_REPO_ID = "thinkonward/geophysical-foundation-model"
+snapshot_download(repo_id=MODEL_REPO_ID, repo_type="model", local_dir="./gfm-weights")
+# assuming you are in the `geophysical-foundation-model` directory 
+from GFM import ElasticViTMAE
+model = ElasticViTMAE.ElasticViTMAE()
+
+```
+
+## Contributing
+
+We welcome contributions from anyone interested in improving this project!
+
+1. Fork the repository.
+2. Create a new branch for your changes:
+
+```bash
+git checkout -b feature/my-feature
+```
+
+3. Make your changes and commit them:
+
+```bash
+git add .
+git commit -m "Add my feature"
+```
+
+4. Push your changes to your forked repository:
+
+```bash
+git push origin feature/my-feature
+```
+
+5. Create a pull request from your forked repository back to the original repository.
+
+Thank you for contributing to the Geophysical Foundation Model 
+
 
 # Model Card for ThinkOnward's Geophysical Foundation Model
-
-This model has been pushed to the Hub using the [PytorchModelHubMixin](https://huggingface.co/docs/huggingface_hub/package_reference/mixins#huggingface_hub.PyTorchModelHubMixin) integration:
-
-This is a model based on [Meta's ViTMAE model](https://huggingface.co/facebook/vit-mae-base), with some modifications to the masking technique. The Geophyiscal Foundation Model, or GFM for short, uses the ViT architecture with masking on traces in 2D seismic images, rather than patches.
 
 ## Model Details
 
@@ -23,7 +139,7 @@ ThinkOnward's Geophysical Foundation Model is a pre-trained a Vision Transformer
 of seismic interpolation. We use 50 3D seismic volumes from the Patch the Planet Challenge, hosted by ThinkOnward as our benchmark hold-out dataset. **Using a Structural Similarity Index Metric (SSIM) to 
 compare results we document the Geophysical Foundation Model is 2-3 times better than Shang et al. (2023), and similar to Lasscock et al. (2024).**
 
-- **Developed by:** Ognjen Tanovic and Mike McIntire of ThinkOnward (Shell Portfolio Company)
+- **Developed by:** Ognjen Tanovic and Mike McIntire of ThinkOnward
 - **Model type:** MAE
 - **License:** Apache 2.0
 - **Based on:** facebook/vit-mae-base
