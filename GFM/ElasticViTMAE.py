@@ -8,8 +8,7 @@
 # timm: https://github.com/rwightman/pytorch-image-models/tree/master/timm
 # DeiT: https://github.com/facebookresearch/deit
 # --------------------------------------------------------
-import numpy as np
-import pandas as pd
+
 import numpy as np
 from functools import partial
 
