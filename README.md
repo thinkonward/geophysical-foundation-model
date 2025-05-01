@@ -97,12 +97,9 @@ And open `Tutorial/GFM_webinar.ipynb` to learn more about data processing.
 6. For advanced users, you can download the model weights from HuggingFace and load them into an instance of the model in Python after you have requested access on HuggingFace.
 
 ```python
-from huggingface_hub import snapshot_download
-MODEL_REPO_ID = "thinkonward/geophysical-foundation-model"
-snapshot_download(repo_id=MODEL_REPO_ID, repo_type="model", local_dir="./gfm-weights")
-# assuming you are in the `geophysical-foundation-model` directory 
+# import the architecture from the GitHub repository
 from GFM import ElasticViTMAE
-model = ElasticViTMAE.ElasticViTMAE()
+model = ElasticViTMAE.ElasticViTMAE.from_pretrained("thinkonward/geophysical-foundation-model")
 
 ```
 
